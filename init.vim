@@ -119,6 +119,8 @@ Plug 'prabirshrestha/asyncomplete.vim'
 " Asyncomplete lsp.vim
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
+Plug 'alx741/vim-rustfmt'
+
 
 "*****************************************************************************
 "*****************************************************************************
