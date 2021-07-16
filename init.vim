@@ -150,9 +150,12 @@ set backspace=indent,eol,start
 
 "" Tabs. May be overridden by autocmd rules
 set tabstop=2
-set softtabstop=0
+set softtabstop=2
 set shiftwidth=2
 set expandtab
+set smarttab
+set smartindent
+set cindent
 
 "" Map leader to ,
 let mapleader=','
@@ -446,11 +449,16 @@ noremap <leader>c :bd<CR>
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
+nnoremap <silent> <leader>m :make<cr>
+
 "" Switching windows
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
+
+"" Comment Ctrl + /
+noremap <silent> <C-_> :Commentary<CR>
 
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
@@ -469,7 +477,12 @@ nnoremap <Leader>o :.Gbrowse<CR>
 
 " c
 autocmd FileType c setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd FileType cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FileType c++ setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+" comment for c, c++ files
+" first line block and gc
+autocmd FileType c setlocal commentstring=//\ %s
+autocmd FileType cpp setlocal commentstring=//\ %s
 
 
 " go
@@ -653,3 +666,5 @@ set shortmess+=c                        " Don't pass messages to |ins-completion
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set updatetime=300                      " Faster completion
 set incsearch
+
+set shiftwidth=2
